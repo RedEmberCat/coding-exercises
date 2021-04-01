@@ -4,24 +4,24 @@ warnings off
 
 ( general )
 : 3dup dup 2over rot ;
-: ! .s cr ; ( debugging )
+: ! .s cr ;  ( debugging )
 
 ( arithmetic symbols )
 : _ negate ;
 : ² dup * ;
 : ±			( n1 n2 -- sum dif ) 2dup + -rot - ;
-: 2/		( a b c -- ac bc ) dup -rot / -rot / swap ; ( see eof )
+: 2/		( a b c -- ac bc ) dup -rot / -rot / swap ;  ( see eof )
 
 ( square root from from https://sametwice.com/sqrt.fs )
-: sqrt-closer 2dup / over - 2 / ; ( square guess -- square guess adjustment)
+: sqrt-closer 2dup / over - 2 / ;  ( square guess -- square guess adjustment)
 : √ 1 begin sqrt-closer dup while + repeat drop nip ;
 
 ( quadratic equation )
 ( no variables )
-: discr 	( a b c -- b²-4ac ) rot 4 * * >r ² r> - ; ( see eof )
-: top		( a b c -- n1 n2 ) over _ >r discr √ r> swap ± ; ( see eof )
+: discr 	( a b c -- b²-4ac ) rot 4 * * >r ² r> - ;  ( see eof )
+: top		( a b c -- n1 n2 ) over _ >r discr √ r> swap ± ;  ( see eof )
 : bot		( a b c -- 2a ) 2drop 2 * ;
-: quad­eq	( a b c -- x1 x2 ) 3dup bot >r top r> 2/ ; ( see eof )
+: quad­eq	( a b c -- x1 x2 ) 3dup bot >r top r> 2/ ;  ( see eof )
 
 2 2 -12 quad­eq ! ( expect 2 -3 )
 
